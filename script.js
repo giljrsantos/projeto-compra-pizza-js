@@ -84,3 +84,14 @@ c('.pizzaInfo--qtmais').addEventListener('click', () => {
     modalQt++;
     c('.pizzaInfo--qt').innerHTML = modalQt;
 });
+
+// click e selecionando o botão do tamanho
+cs('.pizzaInfo--size').forEach((size, sizeIndex) => {
+
+    size.addEventListener('click', (e) => {
+        c('.pizzaInfo--size.selected').classList.remove('selected');
+        size.classList.add('selected');
+    });
+
+
+});
