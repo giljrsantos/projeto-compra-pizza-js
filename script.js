@@ -59,7 +59,6 @@ pizzaJson.map((item, index) => {
 
 
 // Eventos do modal
-
 const closeModal = () => {
     c('.pizzaWindowArea').style.opacity = 0;
     setTimeout(() => {
@@ -69,4 +68,19 @@ const closeModal = () => {
 
 cs('.pizzaInfo--cancelButton, .pizzaInfo--cancelMobileButton').forEach((item) => {
     item.addEventListener('click', closeModal);
-})
+});
+
+// botão para diminuir a quantidade de pizza
+c('.pizzaInfo--qtmenos').addEventListener('click', () => {
+
+    if (modalQt > 1) {
+        modalQt--;
+        c('.pizzaInfo--qt').innerHTML = modalQt;
+    };
+});
+
+// botão para somar a quantidade de pizza
+c('.pizzaInfo--qtmais').addEventListener('click', () => {
+    modalQt++;
+    c('.pizzaInfo--qt').innerHTML = modalQt;
+});
