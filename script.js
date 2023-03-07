@@ -1,4 +1,6 @@
+let cart = [];
 let modalQt = 1;
+let modalKey = 0;
 
 // função anonima
 const c = (el) => document.querySelector(el);
@@ -24,6 +26,9 @@ pizzaJson.map((item, index) => {
 
         // resetando a quantidade de pizza para 1 toda vez que abrir um modal
         modalQt = 1;
+
+        modalKey = key;
+
 
         c('.pizzaBig img').src = pizzaJson[key].img;
         c('.pizzaInfo h1').innerHTML = pizzaJson[key].name;
@@ -87,11 +92,21 @@ c('.pizzaInfo--qtmais').addEventListener('click', () => {
 
 // click e selecionando o botão do tamanho
 cs('.pizzaInfo--size').forEach((size, sizeIndex) => {
-
     size.addEventListener('click', (e) => {
         c('.pizzaInfo--size.selected').classList.remove('selected');
         size.classList.add('selected');
     });
+});
 
+// ação botão carrinho
+c('.pizzaInfo--addButton').addEventListener('click', () => {
+    let size = parseInt(c('.pizzaInfo--size.selected').getAttribute('data-key'));
 
+    cart.push({
+        id: pizzaJson[modalKey].id,
+        size,
+        qt: modalQt
+    });
+
+    closeModal();
 });
