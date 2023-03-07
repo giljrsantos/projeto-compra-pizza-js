@@ -102,16 +102,23 @@ cs('.pizzaInfo--size').forEach((size, sizeIndex) => {
 c('.pizzaInfo--addButton').addEventListener('click', () => {
     let size = parseInt(c('.pizzaInfo--size.selected').getAttribute('data-key'));
 
+    // monta um identificador com o Id da Pizza e o Id do Tamanho da Pizza
     let identifier = pizzaJson[modalKey].id + '@' + size;
 
+    // verifica se existe o itenfificador dentro do array carrinho
     let key = cart.findIndex((item) => item.identifier == identifier);
 
+    // condição que ira verificar, se o valor do [key] for
+    // maior que 1, quer dizer que já existe esse identificador
+    // sendo assim ele soma a quantidade que ja tem no carrinho 
+    // mais a quantidade selecionada
     if (key > -1) {
 
         cart[key].qt += modalQt;
 
     } else {
-
+        // se [key] for igual a [-1] é porque o identificador
+        // não existe, sendo assim, ele adiciona no array [cart]
         cart.push({
             identifier,
             id: pizzaJson[modalKey].id,
@@ -121,6 +128,26 @@ c('.pizzaInfo--addButton').addEventListener('click', () => {
 
     }
 
+    // atualiza o carrinho de compra com as novas pizzas selecionadas
+    updateCart();
 
+    //chama a função para fechar o modal
     closeModal();
 });
+
+// função para atualizar o carrinho de compra
+const updateCart = () => {
+
+    if (cart.length > 0) {
+        c('aside').classList.add('show');
+        for (let i in cart) {
+
+            let pizzaItem = pizzaJson.find((item) => item.id == cart[i].id);
+
+
+
+        }
+    } else {
+        c('aside').classList.remove('show');
+    }
+}
