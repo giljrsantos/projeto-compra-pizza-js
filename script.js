@@ -39,9 +39,6 @@ pizzaJson.map((item, index) => {
 
         cs('.pizzaInfo--size').forEach((size, sizeIndex) => {
 
-            // if (sizeIndex == 2) {
-            //     size.classList.add('selected');
-            // }
             // verificando se tamanho da pizza é [2], se for adiciona a classe .selected
             sizeIndex == 2 ? size.classList.add('selected') : '';
 
