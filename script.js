@@ -132,8 +132,22 @@ c('.pizzaInfo--addButton').addEventListener('click', () => {
     closeModal();
 });
 
+// função click para abrir o carrinho no modo mobile
+c('.menu-openner').addEventListener('click', () => {
+    cart.length > 0 ? c('aside').style.left = '0' : c('aside').style.left = '100vw';
+});
+
+// função para fechar o carrinho no modo mobile
+c('.cart--area .menu-closer').addEventListener('click', () => {
+    c('aside').style.left = '100vw';
+});
+
+
+
 // função para atualizar o carrinho de compra
 const updateCart = () => {
+
+    c('.menu-openner span').innerHTML = cart.length;
 
     if (cart.length > 0) {
         c('aside').classList.add('show');
@@ -175,11 +189,9 @@ const updateCart = () => {
             cartItem.querySelector('.cart--item .cart--item--qt').innerHTML = cart[i].qt;
 
             cartItem.querySelector('.cart--item .cart--item-qtmenos').addEventListener('click', () => {
-                if (cart[i].qt > 1) {
-                    cart[i].qt--;
-                } else {
-                    cart.splice(i, 1)
-                };
+
+                cart[i].qt > 1 ? cart[i].qt-- : cart.splice(i, 1);
+
                 updateCart();
             });
 
@@ -202,5 +214,6 @@ const updateCart = () => {
 
     } else {
         c('aside').classList.remove('show');
+        c('aside').style.left = '100vw';
     }
 }
