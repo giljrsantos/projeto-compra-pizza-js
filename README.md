@@ -10,7 +10,7 @@ Se `true`, então o nó e toda a sua subárvore, incluindo o texto que pode esta
 
 Se `false`, apenas o nó será clonado. A subárvore, incluindo qualquer texto contido no nó, não é clonada.
 
-Observe que deepnão tem efeito em elementos void , como os elementos `<img>` e `<input>`.
+Observe que `deep` não tem efeito em elementos void , como os elementos `<img>` e `<input>`.
 
 Adicionando ou removendo uma classe na tag `HTML`:
  - `querySelector('div').classList.add('selected')`
